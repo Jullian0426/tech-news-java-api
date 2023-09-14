@@ -15,10 +15,10 @@ public class Comment implements Serializable {
     private Integer id;
     private String commentText;
     @ManyToOne
-    @JoinColumn(name = "userId", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
     @ManyToOne
-    @JoinColumn(name = "postId", nullable = false)
+    @JoinColumn(name = "post_id", nullable = false)
     private Post post;
 
     public Comment(Integer id, String commentText, User user, Post post) {

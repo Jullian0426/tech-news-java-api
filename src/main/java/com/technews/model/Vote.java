@@ -14,10 +14,10 @@ public class Vote implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @ManyToOne
-    @JoinColumn(name = "userId", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
     @ManyToOne
-    @JoinColumn(name = "postId", nullable = false)
+    @JoinColumn(name = "post_id", nullable = false)
     private Post post;
 
     public Vote(Integer id, User user, Post post) {
