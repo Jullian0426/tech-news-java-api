@@ -13,13 +13,17 @@ public class Vote implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private Integer userId;
-    private Integer postId;
+    @ManyToOne
+    @JoinColumn(name = "userId", nullable = false)
+    private User user;
+    @ManyToOne
+    @JoinColumn(name = "postId", nullable = false)
+    private Post post;
 
-    public Vote(Integer id, Integer userId, Integer postId) {
+    public Vote(Integer id, User user, Post post) {
         this.id = id;
-        this.userId = userId;
-        this.postId = postId;
+        this.user = user;
+        this.post = post;
     }
 
     public Integer getId() {
@@ -30,20 +34,20 @@ public class Vote implements Serializable {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Integer getPostId() {
-        return postId;
+    public Post getPost() {
+        return post;
     }
 
-    public void setPostId(Integer postId) {
-        this.postId = postId;
+    public void setPost(Post post) {
+        this.post = post;
     }
 
     @Override
@@ -51,20 +55,20 @@ public class Vote implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Vote vote = (Vote) o;
-        return Objects.equals(id, vote.id) && Objects.equals(userId, vote.userId) && Objects.equals(postId, vote.postId);
+        return Objects.equals(id, vote.id) && Objects.equals(user, vote.user) && Objects.equals(post, vote.post);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userId, postId);
+        return Objects.hash(id, user, post);
     }
 
     @Override
     public String toString() {
         return "Vote{" +
                 "id=" + id +
-                ", userId=" + userId +
-                ", postId=" + postId +
+                ", user=" + user +
+                ", post=" + post +
                 '}';
     }
 }

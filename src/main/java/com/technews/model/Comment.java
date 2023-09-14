@@ -14,14 +14,18 @@ public class Comment implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String commentText;
-    private Integer userId;
-    private Integer postId;
+    @ManyToOne
+    @JoinColumn(name = "userId", nullable = false)
+    private User user;
+    @ManyToOne
+    @JoinColumn(name = "postId", nullable = false)
+    private Post post;
 
-    public Comment(Integer id, String commentText, Integer userId, Integer postId) {
+    public Comment(Integer id, String commentText, User user, Post post) {
         this.id = id;
         this.commentText = commentText;
-        this.userId = userId;
-        this.postId = postId;
+        this.user = user;
+        this.post = post;
     }
 
     public Integer getId() {
@@ -40,20 +44,20 @@ public class Comment implements Serializable {
         this.commentText = commentText;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Integer getPostId() {
-        return postId;
+    public Post getPost() {
+        return post;
     }
 
-    public void setPostId(Integer postId) {
-        this.postId = postId;
+    public void setPost(Post post) {
+        this.post = post;
     }
 
     @Override
@@ -61,15 +65,12 @@ public class Comment implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Comment comment = (Comment) o;
-        return Objects.equals(id, comment.id) &&
-                Objects.equals(commentText, comment.commentText) &&
-                Objects.equals(userId, comment.userId) &&
-                Objects.equals(postId, comment.postId);
+        return Objects.equals(id, comment.id) && Objects.equals(commentText, comment.commentText) && Objects.equals(user, comment.user) && Objects.equals(post, comment.post);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, commentText, userId, postId);
+        return Objects.hash(id, commentText, user, post);
     }
 
     @Override
@@ -77,8 +78,8 @@ public class Comment implements Serializable {
         return "Comment{" +
                 "id=" + id +
                 ", commentText='" + commentText + '\'' +
-                ", userId=" + userId +
-                ", postId=" + postId +
+                ", user=" + user +
+                ", post=" + post +
                 '}';
     }
 }
