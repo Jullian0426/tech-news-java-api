@@ -21,6 +21,9 @@ public class Comment implements Serializable {
     @JoinColumn(name = "post_id", nullable = false)
     private Post post;
 
+    public Comment() {
+        // default constructor
+    }
     public Comment(Integer id, String commentText, User user, Post post) {
         this.id = id;
         this.commentText = commentText;

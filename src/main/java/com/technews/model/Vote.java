@@ -20,6 +20,9 @@ public class Vote implements Serializable {
     @JoinColumn(name = "post_id", nullable = false)
     private Post post;
 
+    public Vote() {
+        // default constructor
+    }
     public Vote(Integer id, User user, Post post) {
         this.id = id;
         this.user = user;
