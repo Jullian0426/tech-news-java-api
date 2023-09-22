@@ -138,6 +138,10 @@ public class TechNewsController {
     @PostMapping("/comments")
     public String createCommentCommentsPage(@ModelAttribute Comment comment, Model model, HttpServletRequest request) {
 
+        if (comment.getPost() == null) {
+            System.out.println("comment.post is null");
+            return "redirect:/CommentPostNull/";
+        }
         if (comment.getCommentText().isEmpty() || comment.getCommentText().equals(null)) {
             return "redirect:/singlePostEmptyComment/" + comment.getPost().getId();
         } else {
