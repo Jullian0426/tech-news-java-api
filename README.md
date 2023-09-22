@@ -57,6 +57,8 @@ Throughout the development process, the project highlights the similarities betw
 
 The application has been successfully deployed to Heroku, demonstrating the steps and considerations involved in deploying a Java application to a cloud platform.
 
+Deployed App: https://cc-java-api-102-1961f5472c2e.herokuapp.com/
+
 ## Conclusion
 
 This project serves as a practical example of building a full-stack application using Spring Boot, Spring Data JPA, MySQL, and Thymeleaf. It offers insights into the similarities between JavaScript and Java, the importance of a well-structured project, and the intricacies of deploying a Java application to Heroku.
